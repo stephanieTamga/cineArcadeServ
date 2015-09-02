@@ -16,8 +16,9 @@ CineArcade
             <li><a href="monPanier.htm">Mon Panier</a></li>
 <%--             <li><a href="<%=request.getContextPath()%>/livre/livres.htm">Les livres</a></li> --%>
 <%--             <li><a href="<%=request.getContextPath()%>/livre/ajoutLivre.htm">Ajout livre</a></li> --%>
-        </ul>
+       </ul>
     </nav>
+    
     <form:form method="POST" commandName="criteres">
 		<table>
 			<tr>
@@ -43,5 +44,6 @@ CineArcade
 		</ul>
 
 	</c:if>
+	
 </body>
 </html>

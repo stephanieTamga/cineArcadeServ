@@ -23,41 +23,41 @@ public class ProduitController {
 	// criteres. Dans la jsp, l'objet criters associé au formulaire du
 	// listeUser.jsp ---> stocké automatiquement dans l'objet modèle
 
-	@RequestMapping(value = "/rechercheProducts", method = RequestMethod.GET)
-	public String affiche(ModelMap model) {
-		model.addAttribute("criteres", new Criteres());
-		model.addAttribute("listProduit", new ArrayList<Produit>());
-		return "listeProduit";
-	}
-
-	// Etape 2: programme de recherche
-	// reste dans le meme url car action non définit dans le listeProduit.jsp
-	// criteres est rempli, non vide
-
-	@RequestMapping(value = "/rechercheProducts", method = RequestMethod.POST)
-	public String recherche(@ModelAttribute("criteres") Criteres c,
-			@ModelAttribute("Produit") Produit produit,
-			@ModelAttribute("listProduit") ArrayList<Produit> lProduit) {
-
-		System.out.println(c.getCriteres());
-
-		try {
-
-			List<Produit> produits = DaoProduit.rechercheTous(produit);
-			lProduit.addAll(produits);
-
-			for (Produit lp : lProduit) {
-
-				System.out.println("controller" + lp.getConcepteur());
-
-			}
-
-			return "listeProduit";
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-			return "listeProduit";
-		}
-	}
+//	@RequestMapping(value = "/rechercherProducts", method = RequestMethod.GET)
+//	public String affiche(ModelMap model) {
+//		model.addAttribute("criteres", new Criteres());
+//		model.addAttribute("listProduit", new ArrayList<Produit>());
+//		return "listeProduit";
+//	}
+//
+//	// Etape 2: programme de recherche
+//	// reste dans le meme url car action non définit dans le listeProduit.jsp
+//	// criteres est rempli, non vide
+//
+//	@RequestMapping(value = "/rechercherProducts", method = RequestMethod.POST)
+//	public String recherche(@ModelAttribute("criteres") Criteres c,
+//			@ModelAttribute("Produit") Produit produit,
+//			@ModelAttribute("listProduit") ArrayList<Produit> lProduit) {
+//
+//		System.out.println(c.getCriteres());
+//
+//		try {
+//
+//			List<Produit> produits = DaoProduit.rechercheTous(produit);
+//			lProduit.addAll(produits);
+//
+//			for (Produit lp : lProduit) {
+//
+//				System.out.println("controller" + lp.getConcepteur());
+//
+//			}
+//
+//			return "listeProduit";
+//		} catch (Exception e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//			return "listeProduit";
+//		}
+//	}
 	
 }

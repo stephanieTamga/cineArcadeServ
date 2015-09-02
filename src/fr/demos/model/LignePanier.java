@@ -3,6 +3,8 @@ package fr.demos.model;
 public class LignePanier {
 	private int quantite;
 	private Produit produit;
+	
+	
 	public int getQuantite() {
 		return quantite;
 	}
