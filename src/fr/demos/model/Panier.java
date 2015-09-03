@@ -32,8 +32,8 @@ public class Panier {
 	}
 
 	// permet d'ajouter des lignes contenant des produits dans le panier
-	public void ajouterPanier(String refDuProduitSelectionne, 
-			Produit produit, int quantite) {
+	public void ajouterPanier(String refDuProduitSelectionne, Produit produit,
+			int quantite) {
 		LignePanier ligne = new LignePanier(quantite, produit);
 
 		// déclaration d'une variable nommé explicitement qui ontiendra la
@@ -62,7 +62,8 @@ public class Panier {
 					e.getStackTrace();
 				}
 			} else {
-				listelignePanier.get(i).setQuantite(quantite+listelignePanier.get(i).getQuantite());
+				listelignePanier.get(i).setQuantite(
+						quantite + listelignePanier.get(i).getQuantite());
 			}
 		}
 
@@ -106,15 +107,15 @@ public class Panier {
 		this.sommeTotal = sommeTotal;
 	}
 
-	
-
 	public List<LignePanier> getListelignePanier() {
 		return listelignePanier;
 	}
 
-	public void setListelignePanier(List<LignePanier> listelignePanier) {
-		this.listelignePanier = listelignePanier;
-	}
+	// pas de modification externe par l'utilisateur: contrôle par le panier
+
+	// public void setListelignePanier(List<LignePanier> listelignePanier) {
+	// this.listelignePanier = listelignePanier;
+	// }
 
 	@Override
 	public String toString() {
