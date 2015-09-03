@@ -21,6 +21,7 @@ public class Client {
 	private String telephone;
 	
 	
+	
 	public Client() {
 		super();
 	}

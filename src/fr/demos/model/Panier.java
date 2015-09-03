@@ -1,9 +1,15 @@
 package fr.demos.model;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Panier {
+public class Panier implements Serializable {
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 
 	private long idPanier;
 
