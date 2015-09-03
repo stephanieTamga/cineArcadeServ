@@ -124,10 +124,12 @@ public class ProduitDaoJpa implements ProduitDao{
 //		
 //	}
 
-	@Override
-	public Produit rechercherparReference(String reference) throws Exception {
-		// TODO Auto-generated method stub
-		return null;
-	}
+@Override
+public Produit rechercherparReference(String refDuProduitSelectionne)
+		throws Exception {
+	// TODO Auto-generated method stub
+	return null;
+}
+
 
 }

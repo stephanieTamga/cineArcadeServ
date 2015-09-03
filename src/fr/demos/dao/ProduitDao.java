@@ -15,6 +15,6 @@ public interface ProduitDao extends Dao<Produit> {
 //	
 	List<Produit> rechercheTous(Produit produit) throws Exception;
 //	Produit liste()throws Exception;
-	Produit rechercherparReference(String reference) throws Exception;
+	Produit rechercherparReference(String refDuProduitSelectionne) throws Exception;
 
 }

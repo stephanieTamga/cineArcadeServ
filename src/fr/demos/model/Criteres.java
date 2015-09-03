@@ -1,7 +1,13 @@
 package fr.demos.model;
 
-public class Criteres {
+import java.io.Serializable;
+
+public class Criteres implements Serializable {
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private String criteres;
 
 	public String getCriteres() {

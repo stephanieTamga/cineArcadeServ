@@ -6,33 +6,68 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Insert title here</title>
+<title>CinéArcade Logithèque spécialisée</title>
 </head>
 <body>
-<form:form method="POST" commandName="criteres">
-		<table>
-			<tr>
-				<td>criteres:</td>
+	<table border="1">
+		<tr>
+			<td colspan="3" width="5">
+				<h1>
+					<b>CINEARCADE</b>
+				</h1>
+			</td>
+			<td>Recherche par Critères</td>
+			<form:form method="POST" action="index.htm" commandName="criteres">
 				<td><form:input path="criteres" /></td>
 				<td><form:errors path="criteres" /></td>
-			</tr>
-<tr>		
- 	<td colspan="2"><input type="submit" value="rechercher"></td>
-			</tr>
-		</table>
-	</form:form>
-<br/>
-	<h2> Liste des produits</h2>
+				<td><input type="submit" value="rechercher"></td>
+			</form:form>
 
-	<c:if test="${not empty listProduit}">
 
-		<ul>
-			<c:forEach var="listProduit" items="${listProduit}">
-				<li>${listProduit.concepteur}</li>
-				
-			</c:forEach>
-		</ul>
+			<td><a href="createUser.htm">Mon Compte</a></td>
+			<td><a href="monPanier.htm">Mon Panier</a></td>
+		</tr>
+		<tr>
+			<td colspan="3" width="20"><h2>Catalogue</h2></td>
+			<td colspan="4" width="20" align="center"> <h2>Notre Sélection</h2><br/>
+			<c:if test="${not empty listProduit}">
 
-	</c:if>
-</body>
+					<ul>
+						<c:forEach var="listProduit" items="${listProduit}">
+							<li>${listProduit.concepteur} <a href="monPanier.htm?ref=${listProduit.referenceProduit}"> Ajouter au panier</a></li>
+			
+						</c:forEach>
+					</ul>
+
+				</c:if>
+			</td>
+		</tr>
+
+	</table>
+	<%-- 	<form:form method="POST" commandName="criteres"> --%>
+	<!-- 		<table> -->
+	<!-- 			<tr> -->
+	<!-- 				<td>criteres:</td> -->
+	<%-- 				<td><form:input path="criteres" /></td> --%>
+	<%-- 				<td><form:errors path="criteres" /></td> --%>
+	<!-- 			</tr> -->
+	<!-- 			<tr> -->
+	<!-- 				<td colspan="2"><input type="submit" value="rechercher"></td> -->
+	<!-- 			</tr> -->
+	<!-- 		</table> -->
+	<%-- 	</form:form> --%>
+	<!-- 	<br /> -->
+	<!-- 	<h2>Liste des produits</h2> -->
+
+	<%-- 	<c:if test="${not empty listProduit}"> --%>
+
+	<!-- 		<ul> -->
+	<%-- 			<c:forEach var="listProduit" items="${listProduit}"> --%>
+	<%-- 				<li>${listProduit.concepteur}</li> --%>
+
+	<%-- 			</c:forEach> --%>
+	<!-- 		</ul> -->
+
+	<%-- 	</c:if> --%>
+	<!-- </body> -->
 </html>
