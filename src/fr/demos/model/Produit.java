@@ -2,7 +2,6 @@ package fr.demos.model;
 
 import java.io.Serializable;
 import java.util.List;
-
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Embedded;
@@ -21,14 +20,20 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "produit")
 @Inheritance(strategy = InheritanceType.JOINED)
+<<<<<<< HEAD
 public class Produit implements Serializable {
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
+=======
+public class Produit implements Serializable{	
+>>>>>>> origin/master
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private long idProduit;
+	private static final long serialVersionUID = 1L;
+	
 	@Column(unique=true, nullable=false, length=30)
 	private String referenceProduit;
 	@Column(length = 250)

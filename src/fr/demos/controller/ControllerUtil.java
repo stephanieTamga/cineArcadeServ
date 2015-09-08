@@ -12,7 +12,8 @@ public class ControllerUtil {
 			String message,
 			Panier panier,
 			String refDuProduitSelectionne,
-			ProduitDao daoProduit
+			ProduitDao produitDao
+			
 			// evolution dans la V2 pour plus
 			/* ,@RequestParam("ref2") int quantite */) {
 
@@ -20,7 +21,9 @@ public class ControllerUtil {
 				// à la référence passée en requête
 				try {
 
-					Produit produit = daoProduit
+//					Produit produit = daoProduit
+//							.rechercherparReference(refDuProduitSelectionne);
+					Produit produit = produitDao
 							.rechercherparReference(refDuProduitSelectionne);
 					// actuellement la quantité est 1
 					int quantite = 1;
@@ -35,7 +38,6 @@ public class ControllerUtil {
 				// penser à mettre un ${message} pour afficher le message en cas
 				// d'erreur
 				
-
 			}
 
 }
