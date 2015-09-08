@@ -1,5 +1,7 @@
 package fr.demos.dao;
 
+import fr.demos.model.Produit;
+
 public interface Dao<T> {
 	T rechercheParId(long id);
 	void ajout(T t) throws Exception;
