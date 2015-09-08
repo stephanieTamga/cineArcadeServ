@@ -36,11 +36,17 @@ public class Panier implements Serializable {
 		this.ifClientAuth = true;
 		this.client = client;
 	}
-
+	/*
+	 * 
+	 */
+	
 	// permet d'ajouter des lignes contenant des produits dans le panier
 	public void ajouterPanier(String refDuProduitSelestionne, Produit produit, int quantite) {
 		System.out.println("appel ajout");
 		LignePanier ligne;
+		double prixHt= produit.getPrixProduit().getPrixHT();
+		double tva = produit.getPrixProduit().getTauxTaxeProduit();
+		double prixttcLigne = prixHt*tva*quantite;
 
 		// déclaration d'une variable nommé explicitement qui ontiendra la
 		// référence des produits déjà dans le panier
@@ -82,12 +88,14 @@ public class Panier implements Serializable {
 		}
 
 	}
+	
 
 	/*
 	 * public int getNombreProduits() {
 	 * 
 	 * }
 	 */
+	
 
 	public long getIdPanier() {
 		return idPanier;
