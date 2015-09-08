@@ -9,6 +9,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import fr.demos.dao.ClientDao;
 import fr.demos.model.Client;
+import fr.demos.model.Produit;
 
 public class ClientDaoJpa implements ClientDao  {
 	@PersistenceContext
@@ -64,6 +65,14 @@ public class ClientDaoJpa implements ClientDao  {
 //		return listeDvd;
 		return null;
 	}
+
+
+//
+//	@Override
+//	public Client rechercheParId(long id, Produit p) {
+//		// TODO Auto-generated method stub
+//		return null;
+//	}
 
 
 

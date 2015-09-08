@@ -5,17 +5,18 @@ import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.TypedQuery;
-
 import fr.demos.dao.ProduitDao;
-import fr.demos.model.Livre;
 import fr.demos.model.Produit;
 
 public class ProduitDaoJpa implements ProduitDao{
 
 	@Override
 	public Produit rechercheParId(long id) {
-		// TODO Auto-generated method stub
-		return null;
+		String requete = "select p from Produit p where p.idProduit = ?1";
+		TypedQuery<Produit> query = em.createQuery(requete, Produit.class);
+		query.setParameter(1, id);
+		return  query.getSingleResult();
+//		return em.find(Produit.class, id);
 	}
 
 	@Override
@@ -127,9 +128,11 @@ public class ProduitDaoJpa implements ProduitDao{
 @Override
 public Produit rechercherparReference(String refDuProduitSelectionne)
 		throws Exception {
-	// TODO Auto-generated method stub
-	return null;
+	String requete = "select p from Produit p where p.referenceProduit = ?1";
+	TypedQuery<Produit> query = em.createQuery(requete, Produit.class);
+	query.setParameter(1, refDuProduitSelectionne);
+	return  query.getSingleResult();
+
+
 }
-
-
 }

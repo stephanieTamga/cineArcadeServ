@@ -24,14 +24,19 @@ public class PanierController {
 
 	@Autowired
 	ProduitDao dao;
-//
-//	@RequestMapping(value = "/monPanier", method = RequestMethod.GET)
-//	public String affiche(ModelMap model) {
-//		model.addAttribute("message", "");
-//		model.addAttribute("panier", new Panier());
-//		return "panier ";
+
+	@RequestMapping(value = "/pan", method = RequestMethod.GET)
+	public String afficher(){
+		
+		return "panier";
+	}
+//	@RequestMapping(value = "/pan", method = RequestMethod.GET)
+//	public String afficher(@RequestParam("ref") String ref, ModelMap modelMap){
+//		modelMap.addAttribute("listeProduit", ref);
+//		
+//		return "panier";
 //	}
-//
+
 //	// méthode permettant de faire l'ajout du produit sélectionné dans le panier
 //	// méthode en GET car on utilise des liens <a href> pour récupérer la
 //	// référence du produit sélectionné
