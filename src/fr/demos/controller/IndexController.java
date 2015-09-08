@@ -83,20 +83,58 @@ public class IndexController {
 			@RequestParam("ref") String refDuProduitSelectionne
 	// evolution dans la V2 pour plus
 	/* ,@RequestParam("ref2") int quantite */) {
-
+		try {
 		ControllerUtil util = new ControllerUtil();
-		
 
 		// récupération du produit sélectionné dans la BDD grâce
 		// à la référence passée en requête
 		util.ajoutePanier(message, panier, refDuProduitSelectionne, daoProduit);
-			
-		
+
 		// penser à mettre un ${message} pour afficher le message en cas
 		// d'erreur
+		
 
 		return "index";
-
+		}
+		catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return "index";
+		}
 	}
+	
+	//
+	// // méthode permettant de faire l'ajout du produit sélectionné dans le
+	// panier
+	// // méthode en GET car on utilise des liens <a href> pour récupérer la
+	// // référence du produit sélectionné
+	//
+	@RequestMapping(value = "/supprimerPanier", method = RequestMethod.GET)
+	public String suprimerPanier(
 
+	@ModelAttribute("message") String message,
+			@ModelAttribute("panier") Panier panier,
+			@RequestParam("ref") String refDuProduitSelectionne
+	// evolution dans la V2 pour plus
+	/* ,@RequestParam("ref2") int quantite */) {
+		try {
+		ControllerUtil util = new ControllerUtil();
+
+		// récupération du produit sélectionné dans la BDD grâce
+		// à la référence passée en requête
+		util.supprimerPanier(message, panier, refDuProduitSelectionne, daoProduit);
+
+		// penser à mettre un ${message} pour afficher le message en cas
+		// d'erreur
+		
+
+		return "index";
+		}
+		catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return "index";
+		}
+	}
+	
 }
