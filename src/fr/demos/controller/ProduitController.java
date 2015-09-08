@@ -50,7 +50,7 @@ public class ProduitController {
 		try {
 
 			lProduit.clear();
-			List<Produit> produits = daoProduit.rechercheTous(produit);
+			List<Produit> produits = daoProduit.rechercheTous();
 			lProduit.addAll(produits);
 
 			for (Produit lp : lProduit) {
@@ -75,13 +75,16 @@ public class ProduitController {
 
 			@ModelAttribute("message") String message,
 			@ModelAttribute("panier") Panier panier,
-			@RequestParam("ref") String refDuProduitSelectionne
+			@RequestParam("ref") String refDuProduitSelectionne,
+			@RequestParam("produit") Produit p
 	// evolution dans la V2 pour plus
 	/* ,@RequestParam("ref2") int quantite */) {
 
 		
 		ControllerUtil util = new ControllerUtil();
-		util.ajoutePanier(message, panier, refDuProduitSelectionne, daoProduit);
+		util.ajoutePanier(message, panier, refDuProduitSelectionne, daoProduit, p);
+		
+		
 		/*
 		
 		// récupération du produit sélectionné dans la BDD grâce

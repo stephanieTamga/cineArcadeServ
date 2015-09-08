@@ -1,6 +1,6 @@
 package fr.demos.controller;
 
-
+import java.util.List;
 
 import fr.demos.dao.ProduitDao;
 import fr.demos.model.Panier;
@@ -8,38 +8,41 @@ import fr.demos.model.Produit;
 
 public class ControllerUtil {
 
-
-
-	
 	public void ajoutePanier(
 
-			String message,
-			Panier panier,
-			String refDuProduitSelectionne,
-			ProduitDao daoProduit
-			// evolution dans la V2 pour plus
-			/* ,@RequestParam("ref2") int quantite */) {
+	String message, Panier panier, String refDuProduitSelectionne,
+			ProduitDao daoProduit, Produit p
+	// evolution dans la V2 pour plus
+	/* ,@RequestParam("ref2") int quantite */) {
 
-				// récupération du produit sélectionné dans la BDD grâce
-				// à la référence passée en requête
-				try {
+		// récupération du produit sélectionné dans la BDD grâce
+		// à la référence passée en requête
+		try {
 
-					Produit produit = daoProduit
-							.rechercherparReference(refDuProduitSelectionne);
-					// actuellement la quantité est 1
-					int quantite = 1;
-					panier.ajouterPanier(refDuProduitSelectionne, produit, quantite);
-				} catch (Exception e) {
-					System.out.println("le produit n'a pas été récupéré car"
-							+ e.getMessage());
-					// message qui sera renvoyé sur la page d'erreur
-					message = "le produit n'a pas été récupéré car" + e.getMessage();
-				}
+			Produit produit = daoProduit.rechercherparReference(refDuProduitSelectionne, p);
 
-				// penser à mettre un ${message} pour afficher le message en cas
-				// d'erreur
-				
+			// actuellement la quantité est 1
 
-			}
+			int quantite = 1;
+			panier.ajouterPanier(refDuProduitSelectionne, produit, quantite);
+			System.out
+					.println("  methode ajoutePanier: la ref du produit reccupere: "
+							+ refDuProduitSelectionne);
+			System.out
+					.println("  methode ajoutePanier: la  ref du produit reccupere: "
+							+ p.getReferenceProduit());
 
+
+
+		} catch (Exception e) {
+			System.out.println("le produit n'a pas été récupéré car"
+					+ e.getMessage());
+			// message qui sera renvoyé sur la page d'erreur
+			message = "le produit n'a pas été récupéré car" + e.getMessage();
+		}
+
+		// penser à mettre un ${message} pour afficher le message en cas
+		// d'erreur
+
+	}
 }

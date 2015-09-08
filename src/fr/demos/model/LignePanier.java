@@ -1,5 +1,7 @@
 package fr.demos.model;
 
+import java.util.List;
+
 public class LignePanier {
 	private int quantite;
 	private Produit produit;
@@ -25,6 +27,7 @@ public class LignePanier {
 	}
 	public LignePanier() {
 		super();
-	}	
+	}
+
 		
 }

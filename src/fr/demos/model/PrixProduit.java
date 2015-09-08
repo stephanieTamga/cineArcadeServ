@@ -8,27 +8,25 @@ import javax.persistence.Table;
 @Table
 public class PrixProduit {
 
-	private String prixHT;
-	private String tauxTaxeProduit;
+	private double prixHT;
+	private double  tauxTaxeProduit;
 	private String devise;
 	
 	
-	public String getPrixHT() {
+
+
+	public double getPrixHT() {
 		return prixHT;
 	}
-
-	public void setPrixHT(String prixHT) {
+	public void setPrixHT(double prixHT) {
 		this.prixHT = prixHT;
 	}
-
-	public String getTauxTaxeProduit() {
+	public double getTauxTaxeProduit() {
 		return tauxTaxeProduit;
 	}
-
-	public void setTauxTaxeProduit(String tauxTaxeProduit) {
+	public void setTauxTaxeProduit(double tauxTaxeProduit) {
 		this.tauxTaxeProduit = tauxTaxeProduit;
 	}
-
 	public String getDevise() {
 		return devise;
 	}

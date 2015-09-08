@@ -1,5 +1,6 @@
 package fr.demos.model;
 
+import java.io.Serializable;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -20,12 +21,20 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "produit")
 @Inheritance(strategy = InheritanceType.JOINED)
-public class Produit {
+public class Produit implements Serializable{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private long idProduit;
-	@Column(unique=true, nullable=false, length=30)
+	@Column(unique=true, nullable=false)
 	private String referenceProduit;
+	public static long getSerialversionuid() {
+		return serialVersionUID;
+	}
+
 	@Column(length = 30)
 	private String designation;
 	@Column(length = 30)
@@ -79,8 +88,8 @@ public class Produit {
 		return concepteur;
 	}
 
-	public void setConcepteur(String concepteur) {
-		this.concepteur = concepteur;
+	public String setConcepteur(String concepteur) {
+		return this.concepteur = concepteur;
 	}
 
 	public String getDescription() {
@@ -135,8 +144,8 @@ public class Produit {
 		return referenceProduit;
 	}
 
-	public void setReferenceProduit(String referenceProduit) {
-		this.referenceProduit = referenceProduit;
+	public String setReferenceProduit(String referenceProduit) {
+		return this.referenceProduit = referenceProduit;
 	}
 
 	public PartenaireCommercial getPartenaire() {
