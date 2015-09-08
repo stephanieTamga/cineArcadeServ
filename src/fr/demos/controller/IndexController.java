@@ -52,7 +52,7 @@ public class IndexController {
 		try {
 
 			lProduit.clear();
-			List<Produit> produits = daoProduit.rechercheTous(produit);
+			List<Produit> produits = daoProduit.rechercheTous();
 			lProduit.addAll(produits);
 
 			for (Produit lp : lProduit) {

@@ -28,7 +28,6 @@ public class ClientDaoJpa implements ClientDao  {
 	@Override
 	@Transactional
 	public void ajout(Client t) throws Exception {
-		// TODO Auto-generated method stub
 		//ut.begin();
 		em.persist(t);
 		//ut.commit();
