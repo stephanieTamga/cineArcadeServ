@@ -25,7 +25,7 @@
 
 
 			<td><a href="createUser.htm">Mon Compte</a></td>
-			<td><a href="ContenuPanier.htm">Mon Panier</a></td>
+			<td><a href="Pan.htm">Mon Panier</a></td>
 		</tr>
 		<tr>
 			<td colspan="3" width="20"><h2>Catalogue</h2></td>

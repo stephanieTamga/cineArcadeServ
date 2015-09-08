@@ -60,7 +60,7 @@ public String afficher(){
 //	@ModelAttribute("message") String message,
 //			@ModelAttribute("panier") Panier panier,
 //			@RequestParam("ref") String refDuProduitSelectionne
-
+//
 //	// evolution dans la V2 pour plus
 //	/* ,@RequestParam("ref2") int quantite */) {
 ////

@@ -50,7 +50,7 @@ public class ProduitController {
 		try {
 
 			lProduit.clear();
-			List<Produit> produits = daoProduit.rechercheTous();
+			List<Produit> produits = daoProduit.rechercheTous(produit);
 			lProduit.addAll(produits);
 
 			for (Produit lp : lProduit) {
@@ -82,7 +82,7 @@ public class ProduitController {
 
 		
 		ControllerUtil util = new ControllerUtil();
-		util.ajoutePanier(message, panier, refDuProduitSelectionne, daoProduit, p);
+		util.ajoutePanier(message, panier, refDuProduitSelectionne, daoProduit);
 		
 		
 		/*
