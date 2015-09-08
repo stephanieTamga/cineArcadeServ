@@ -20,14 +20,19 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "produit")
 @Inheritance(strategy = InheritanceType.JOINED)
-public class Produit implements Serializable{	
+public class Produit implements Serializable {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private long idProduit;
 	private static final long serialVersionUID = 1L;
-	
-	@Column(unique=true, nullable=false, length=30)
+
+	@Column(unique = true, nullable = false, length = 30)
 	private String referenceProduit;
+
+	public static long getSerialversionuid() {
+		return serialVersionUID;
+	}
+
 	@Column(length = 30)
 	private String designation;
 	@Column(length = 30)
@@ -49,7 +54,7 @@ public class Produit implements Serializable{
 	@OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
 	private List<Critique> critique;
 	@ManyToOne
-	@JoinTable(name="idPartenaire")
+	@JoinTable(name = "idPartenaire")
 	private PartenaireCommercial partenaire;
 	private String image;
 
@@ -81,8 +86,8 @@ public class Produit implements Serializable{
 		return concepteur;
 	}
 
-	public void setConcepteur(String concepteur) {
-		this.concepteur = concepteur;
+	public String setConcepteur(String concepteur) {
+		return this.concepteur = concepteur;
 	}
 
 	public String getDescription() {
@@ -137,8 +142,8 @@ public class Produit implements Serializable{
 		return referenceProduit;
 	}
 
-	public void setReferenceProduit(String referenceProduit) {
-		this.referenceProduit = referenceProduit;
+	public String setReferenceProduit(String referenceProduit) {
+		return this.referenceProduit = referenceProduit;
 	}
 
 	public PartenaireCommercial getPartenaire() {
@@ -169,6 +174,4 @@ public class Produit implements Serializable{
 		super();
 	}
 
-	
-	
 }

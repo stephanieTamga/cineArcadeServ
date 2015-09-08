@@ -12,7 +12,7 @@ public class PrixProduit {
 	private double tauxTaxeProduit;
 	private String devise;
 	
-	
+
 	public double getPrixHT() {
 		return prixHT;
 	}

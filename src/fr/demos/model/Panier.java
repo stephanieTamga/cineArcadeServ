@@ -36,66 +36,6 @@ public class Panier implements Serializable {
 		this.ifClientAuth = true;
 		this.client = client;
 	}
-	/*
-	 * 
-	 */
-	
-	// permet d'ajouter des lignes contenant des produits dans le panier
-	public void ajouterPanier(String refDuProduitSelestionne, Produit produit, int quantite) {
-		System.out.println("appel ajout");
-		LignePanier ligne;
-		double prixHt= produit.getPrixProduit().getPrixHT();
-		double tva = produit.getPrixProduit().getTauxTaxeProduit();
-		double prixttcLigne = prixHt*tva*quantite;
-
-		// déclaration d'une variable nommé explicitement qui ontiendra la
-		// référence des produits déjà dans le panier
-		String refDuProduit;
-
-		// boucle for permettant de parcourir la liste des lignes existantes
-		// dans le panier
-		boolean refTrouve = false;
-		for (int i = 0; i < listelignePanier.size(); i++) {
-			// instanciation de la variable contenant la référence de chaque
-			// produit dans le panier
-			refDuProduit = listelignePanier.get(i).getProduit().getReferenceProduit();
-			// condition vérifiant que la référence du produit sélectionne
-			// n'est pas déjà présente dansle panier
-			if (refDuProduit.equals(refDuProduitSelestionne)) {
-				refTrouve = true;
-				System.out.println("modif de la quantité d'une ligne dans le panier " + refDuProduitSelestionne);
-				listelignePanier.get(i).setQuantite(
-						quantite + listelignePanier.get(i).getQuantite());
-				break;
-			}
-		}
-		if (!refTrouve) {
-			try {
-				// association du produit sélectionné à une ligne panier
-				ligne = new LignePanier(quantite, produit);
-				ligne.setProduit(produit);
-				ligne.setQuantite(quantite);
-				// insertion de la ligne conteant le produit sélectionné
-				// dans la liste des lignes du panier
-
-				System.out.println("ajout d'une ligne dans le panier" + ligne);
-				listelignePanier.add(ligne);
-			} catch (Exception e) {
-				// mauvaise gestion, valable pour le debugging
-				e.printStackTrace();
-			}
-
-		}
-
-	}
-	
-
-	/*
-	 * public int getNombreProduits() {
-	 * 
-	 * }
-	 */
-	
 
 	public long getIdPanier() {
 		return idPanier;
@@ -133,13 +73,155 @@ public class Panier implements Serializable {
 		return listelignePanier;
 	}
 
-	public void setListelignePanier(List<LignePanier> listelignePanier) {
-		this.listelignePanier = listelignePanier;
-	}
-
 	@Override
 	public String toString() {
 		return ":" + listelignePanier;
+	}
+
+	// permet d'ajouter des lignes contenant des produits dans le panier
+	// <<<<<<< HEAD
+	// public void ajouterPanier(String refDuProduitSelectionne, Produit
+	// produit,
+	// int quantite) {
+	// LignePanier ligne = new LignePanier(quantite, produit);
+	//
+	// =======
+	public void ajouterPanier(String refDuProduitSelestionne, Produit produit,
+			int quantite) {
+		System.out.println("appel ajout");
+		LignePanier ligne;
+		double prixHt= produit.getPrixProduit().getPrixHT();
+		double tva = produit.getPrixProduit().getTauxTaxeProduit();
+		double prixttcLigne = prixHt*tva*quantite;
+
+		// déclaration d'une variable nommé explicitement qui ontiendra la
+		// référence des produits déjà dans le panier
+		String refDuProduit;
+
+		// boucle for permettant de parcourir la liste des lignes existantes
+		// dans le panier
+		boolean refTrouve = false;
+		for (int i = 0; i < listelignePanier.size(); i++) {
+			// instanciation de la variable contenant la référence de chaque
+			// produit dans le panier
+			refDuProduit = listelignePanier.get(i).getProduit()
+					.getReferenceProduit();
+
+			if (refDuProduit.equals(refDuProduitSelestionne)) {
+				refTrouve = true;
+				System.out.println("la refernce du produit  2est: "
+						+ refDuProduit);
+				System.out
+						.println("modif de la quantité d'une ligne dans le panier "
+								+ refDuProduitSelestionne);
+				listelignePanier.get(i).setQuantite(
+						quantite + listelignePanier.get(i).getQuantite());
+				sommeTotal += ((produit.getPrixProduit().getPrixHT()) * quantite);
+				System.out
+						.println("la somme totale si ref=refRecherchee trouvee: "
+								+ sommeTotal);
+				nbrProduit += quantite;
+				System.out.println("le nombre de produit:" + nbrProduit);
+				break;
+			}
+		}
+		if (!refTrouve) {
+			try {
+				// association du produit sélectionné à une ligne panier
+				ligne = new LignePanier(quantite, produit);
+				ligne.setProduit(produit);
+				ligne.setQuantite(quantite);
+				// insertion de la ligne conteant le produit sélectionné
+				// dans la liste des lignes du panier
+
+				System.out.println("ajout d'une ligne dans le panier" + ligne);
+				listelignePanier.add(ligne);
+				sommeTotal += ((produit.getPrixProduit().getPrixHT()) * quantite);
+				System.out.println("la somme totale si refRech non trouvé: "
+						+ sommeTotal);
+				nbrProduit += ligne.getQuantite();
+				System.out.println("le nombre de produit:" + nbrProduit);
+			} catch (Exception e) {
+				// mauvaise gestion, valable pour le debugging
+				e.printStackTrace();
+
+			}
+
+		}
+
+	}
+	
+
+	/*
+	 * public int getNombreProduits() {
+	 * 
+	 * }
+	 */
+
+	public void supprimerPanier(String refDuProduitSelestionne, Produit produit,
+			int quantite) {
+		System.out.println("appel suprimer");
+		LignePanier ligne;
+
+		// déclaration d'une variable nommé explicitement qui ontiendra la
+		// référence des produits déjà dans le panier
+		String refDuProduit;
+
+
+		// boucle for permettant de parcourir la liste des lignes existantes
+		// dans le panier
+		boolean refTrouve = false;
+		for (int i = 0; i < listelignePanier.size(); i++) {
+			// instanciation de la variable contenant la référence de chaque
+			// produit dans le panier
+			refDuProduit = listelignePanier.get(i).getProduit()
+					.getReferenceProduit();
+
+			if (refDuProduit.equals(refDuProduitSelestionne)) {
+				refTrouve = true;
+				System.out.println("la reference du produit  2 est: "
+						+ refDuProduit);
+				System.out
+						.println("modif de la quantité d'une ligne dans le panier "
+								+ refDuProduitSelestionne);
+				listelignePanier.get(i).setQuantite(
+						quantite + listelignePanier.get(i).getQuantite());
+				
+				// soustraction effectue depuis les ligne
+				sommeTotal -= ((produit.getPrixProduit().getPrixHT()) * quantite);
+				System.out
+						.println("la somme totale si ref=refRecherchee trouvee après soustraction : "
+								+ sommeTotal);
+				// reduction de la quantité
+				nbrProduit -= quantite;
+				System.out.println("le nombre de produit après soustraction:" + nbrProduit);
+				break;
+			}
+		}
+		if (!refTrouve) {
+			try {
+				// association du produit sélectionné à une ligne panier
+				ligne = new LignePanier(quantite, produit);
+				ligne.setProduit(produit);
+				ligne.setQuantite(quantite);
+				// insertion de la ligne conteant le produit sélectionné
+				// dans la liste des lignes du panier
+
+				System.out.println("ajout d'une ligne dans le panier" + ligne);
+				listelignePanier.remove(ligne);
+				sommeTotal -= ((produit.getPrixProduit().getPrixHT()) * quantite);
+				System.out.println("la somme totale si refRech non trouvé: "
+						+ sommeTotal);
+				nbrProduit -= ligne.getQuantite();
+				System.out.println("le nombre de produit:" + nbrProduit);
+			} catch (Exception e) {
+				// mauvaise gestion, valable pour le debugging
+				e.printStackTrace();
+
+			}
+
+		}
+
 	}
 
 }

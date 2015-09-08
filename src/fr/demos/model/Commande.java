@@ -42,7 +42,9 @@ public class Commande {
 	public Date getDate_commande() {
 		return date_commande;
 	}
-
+    
+	
+	
 	public void setDate_commande(Date date_commande) {
 		this.date_commande = date_commande;
 	}

@@ -1,5 +1,7 @@
 package fr.demos.model;
 
+import java.util.List;
+
 public class LignePanier {
 	private int quantite;
 	private Produit produit;
@@ -35,6 +37,7 @@ public class LignePanier {
 	public LignePanier() {
 		super();
 	}
+
 	
 	
 //	public double getPrixttcLigne(){
@@ -42,7 +45,6 @@ public class LignePanier {
 //		double tva = produit.getPrixProduit().getTauxTaxeProduit();
 //		double som = prixHt*tva*quantite;
 //		return som;
-//		
-//	}
+
 		
 }
