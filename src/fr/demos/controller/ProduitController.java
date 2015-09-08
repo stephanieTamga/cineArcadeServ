@@ -42,7 +42,6 @@ public class ProduitController {
 	// criteres est rempli, non vide
 	@RequestMapping(value = "/index", method = RequestMethod.POST)
 	public String recherche(@ModelAttribute("criteres") Criteres c,
-			@ModelAttribute("Produit") Produit produit,
 			@ModelAttribute("listProduit") ArrayList<Produit> lProduit) {
 
 		System.out.println(c.getCriteres());
@@ -50,7 +49,7 @@ public class ProduitController {
 		try {
 
 			lProduit.clear();
-			List<Produit> produits = daoProduit.rechercheTous(produit);
+			List<Produit> produits = daoProduit.rechercheTous();
 			lProduit.addAll(produits);
 
 			for (Produit lp : lProduit) {

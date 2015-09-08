@@ -10,11 +10,15 @@ import javax.persistence.Table;
 @Table(name="livre")
 @DiscriminatorValue("LI")
 public class Livre extends Produit {
-	@Column(unique = true, nullable=false, length=10)
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	@Column(unique = true, nullable=false, length=13)
 	private String numeroIsbn;
-	@Column(length=20)
+	@Column(length=50)
 	private String genre;
-	@Column(length=20)
+	@Column(length=100)
 	private String collection;
 	
 	

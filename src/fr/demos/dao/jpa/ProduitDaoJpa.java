@@ -99,7 +99,7 @@ public class ProduitDaoJpa implements ProduitDao{
 //	}
 
 	@Override
-	public List<Produit> rechercheTous(Produit produit) throws Exception {
+	public List<Produit> rechercheTous() throws Exception {
 		TypedQuery<Produit> query = em.createQuery("from Produit p ",
 				Produit.class);
 

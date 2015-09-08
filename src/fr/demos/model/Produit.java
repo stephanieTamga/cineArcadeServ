@@ -1,5 +1,6 @@
 package fr.demos.model;
 
+import java.io.Serializable;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -20,24 +21,28 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "produit")
 @Inheritance(strategy = InheritanceType.JOINED)
-public class Produit {
+public class Produit implements Serializable {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private long idProduit;
 	@Column(unique=true, nullable=false, length=30)
 	private String referenceProduit;
-	@Column(length = 30)
+	@Column(length = 250)
 	private String designation;
 	@Column(length = 30)
 	private String categorie;
-	@Column(length = 30)
+	@Column(length = 100)
 	private String fabriquant;
-	@Column(nullable = false, length = 30)
+	@Column(nullable = false, length = 250)
 	private String concepteur;
-	@Column(length = 200)
+	@Column(length = 3500)
 	private String description;
-	@Column(length = 200)
-	private String Caracteristiques;
+	@Column(length = 500)
+	private String caracteristiques;
 	@Column(length = 30)
 	private boolean virtuel;
 	@Column(length = 30)
@@ -92,11 +97,11 @@ public class Produit {
 	}
 
 	public String getCaracteristiques() {
-		return Caracteristiques;
+		return caracteristiques;
 	}
 
 	public void setCaracteristiques(String caracteristiques) {
-		Caracteristiques = caracteristiques;
+		this.caracteristiques = caracteristiques;
 	}
 
 	public boolean isVirtuel() {
