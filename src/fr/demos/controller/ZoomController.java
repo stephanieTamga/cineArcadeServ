@@ -19,6 +19,13 @@ public class ZoomController {
 	@Autowired
 	ProduitDao dao;	
 	
+	@RequestMapping(value = "/zoomArticle", method = RequestMethod.GET)
+	public String affiche(ModelMap model) {
+		model.addAttribute("messageConfirmationAjout", "");
+		return "zoomLivre";
+	}
+	
+	
 	//il nous faut faire des méthodes permettant d'effectuer des actions sur la page de zoom
 	
 	//pour ajouter l'article dans le panier depuis la page de zoom sur l'article
