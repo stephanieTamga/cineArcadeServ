@@ -52,9 +52,7 @@ public class Panier implements Serializable {
 		return nbrProduit;
 	}
 
-	public void setNbrProduit(int nbrProduit) {
-		this.nbrProduit = nbrProduit;
-	}
+	
 
 	public boolean isIfClientAuth() {
 		return ifClientAuth;
@@ -68,9 +66,7 @@ public class Panier implements Serializable {
 		return sommeTotal;
 	}
 
-	public void setSommeTotal(double sommeTotal) {
-		this.sommeTotal = sommeTotal;
-	}
+	
 
 	public List<LignePanier> getListelignePanier() {
 		return listelignePanier;
@@ -92,7 +88,8 @@ public class Panier implements Serializable {
 	public void ajouterPanier(String refDuProduitSelestionne, Produit produit,
 			int quantite) {
 		System.out.println("appel ajout");
-		LignePanier ligne;
+		LignePanier ligne=null;
+		
 
 		// déclaration d'une variable nommé explicitement qui ontiendra la
 		// référence des produits déjà dans le panier
@@ -104,7 +101,8 @@ public class Panier implements Serializable {
 		for (int i = 0; i < listelignePanier.size(); i++) {
 			// instanciation de la variable contenant la référence de chaque
 			// produit dans le panier
-			refDuProduit = listelignePanier.get(i).getProduit()
+			ligne=listelignePanier.get(i);
+			refDuProduit = ligne.getProduit()
 					.getReferenceProduit();
 
 			if (refDuProduit.equals(refDuProduitSelestionne)) {
@@ -114,14 +112,9 @@ public class Panier implements Serializable {
 				System.out
 						.println("modif de la quantité d'une ligne dans le panier "
 								+ refDuProduitSelestionne);
-				listelignePanier.get(i).setQuantite(
-						quantite + listelignePanier.get(i).getQuantite());
-				sommeTotal += ((produit.getPrixProduit().getPrixHT()) * quantite);
-				System.out
-						.println("la somme totale si ref=refRecherchee trouvee: "
-								+ sommeTotal);
-				nbrProduit += quantite;
-				System.out.println("le nombre de produit:" + nbrProduit);
+				ligne.setQuantite(
+						quantite + ligne.getQuantite());
+				
 				break;
 			}
 		}
@@ -136,11 +129,8 @@ public class Panier implements Serializable {
 
 				System.out.println("ajout d'une ligne dans le panier" + ligne);
 				listelignePanier.add(ligne);
-				sommeTotal += ((produit.getPrixProduit().getPrixHT()) * quantite);
-				System.out.println("la somme totale si refRech non trouvé: "
-						+ sommeTotal);
-				nbrProduit += ligne.getQuantite();
-				System.out.println("le nombre de produit:" + nbrProduit);
+				
+				
 			} catch (Exception e) {
 				// mauvaise gestion, valable pour le debugging
 				e.printStackTrace();
@@ -148,17 +138,38 @@ public class Panier implements Serializable {
 			}
 
 		}
+		// calcul prix total et nb produit
+		
+		sommeTotal+=ligne.getPrixttcLigne();
+		System.out
+				.println("la somme totale si ref=refRecherchee trouvee: "
+						+ sommeTotal);
+		nbrProduit += quantite;
+		
+		System.out.println("le nombre de produit:" + nbrProduit);
 
 	}
 
+	
+
+	/*
+	 * public int getNombreProduits() {
+	 * 
+	 * }
+	 */
+
+
+
 	public void supprimerPanier(String refDuProduitSelestionne,
 			Produit produit, int quantite) throws ExceptionNegativeValue {
+
 		System.out.println("appel suprimer");
 		LignePanier ligne;
 
 		// déclaration d'une variable nommé explicitement qui ontiendra la
 		// référence des produits déjà dans le panier
 		String refDuProduit;
+
 
 		// boucle for permettant de parcourir la liste des lignes existantes
 		// dans le panier

@@ -9,11 +9,9 @@ import javax.persistence.Table;
 public class PrixProduit {
 
 	private double prixHT;
-	private double  tauxTaxeProduit;
+	private double tauxTaxeProduit;
 	private String devise;
 	
-	
-
 
 	public double getPrixHT() {
 		return prixHT;
@@ -33,5 +31,13 @@ public class PrixProduit {
 	public void setDevise(String devise) {
 		this.devise = devise;
 	}
+
+	@Override
+	public String toString() {
+		return "prixHT=" + prixHT + ", TVA="
+				+ tauxTaxeProduit;
+	}
+	
+	
 	
 }

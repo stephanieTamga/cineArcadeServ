@@ -50,14 +50,14 @@ public class IndexController {
 	// criteres est rempli, non vide
 	@RequestMapping(value = "/index", method = RequestMethod.POST)
 	public String recherche(@ModelAttribute("criteres") Criteres c,
-			@ModelAttribute("Produit") Produit produit,
+			@ModelAttribute("produit") Produit produit,
 			@ModelAttribute("listProduit") ArrayList<Produit> lProduit) {
 
 		System.out.println(c.getCriteres());
 
 		try {
-
-			lProduit.clear();
+//
+//			lProduit.clear();
 			List<Produit> produits = daoProduit.rechercheTous(produit);
 
 			lProduit.addAll(produits);
@@ -80,7 +80,7 @@ public class IndexController {
 	// panier
 	// // méthode en GET car on utilise des liens <a href> pour récupérer la
 	// // référence du produit sélectionné
-	//
+	
 	@RequestMapping(value = "/ajouterPanier", method = RequestMethod.GET)
 	public String ajoutePanier(
 
@@ -115,8 +115,13 @@ public class IndexController {
 	// // méthode en GET car on utilise des liens <a href> pour récupérer la
 	// // référence du produit sélectionné
 	//
-	@RequestMapping(value = "/supprimerPanier", method = RequestMethod.GET)
-	public String supprimerPanier(
+//<<<<<<< HEAD
+//	@RequestMapping(value = "/supprimerPanier", method = RequestMethod.GET)
+//=======
+
+	@RequestMapping(value = "/supprimerLigne", method = RequestMethod.GET)
+
+public String supprimerPanier(
 
 	@ModelAttribute("message") String message,
 			@ModelAttribute("panier") Panier panier,
@@ -134,12 +139,12 @@ public class IndexController {
 		// d'erreur
 		
 
-		return "index";
+		return "panier";
 		}
 		catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-			return "index";
+			return "panier";
 		}
 	}
 	
@@ -147,6 +152,7 @@ public class IndexController {
 	// En cours
 //	@RequestMapping(value = "/clearPanier", method = RequestMethod.GET)
 //	public String clearPanier(
+
 //
 //	@ModelAttribute("message") String message,
 //			@ModelAttribute("panier") Panier panier,
@@ -156,8 +162,14 @@ public class IndexController {
 //		try {
 //		ControllerUtil util = new ControllerUtil();
 //
-//		util.CleanPanier(message, panier);
-//		panier.clearPanier();
+
+//		// récupération du produit sélectionné dans la BDD grâce
+//		// à la référence passée en requête
+//		util.supprimerPanier(message, panier, refDuProduitSelectionne, daoProduit);
+//
+//		// penser à mettre un ${message} pour afficher le message en cas
+//		// d'erreur
+
 //		
 //
 //		return "index";
@@ -168,4 +180,5 @@ public class IndexController {
 //			return "index";
 //		}
 //	}
+
 }

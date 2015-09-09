@@ -27,9 +27,11 @@ public class PanierController {
 
 	@RequestMapping(value = "/pan", method = RequestMethod.GET)
 	public String afficher() {
+	
+	return "lepanier";
+}
 
-		return "lepanier";
-	}
+
 
 	@RequestMapping(value = "/cleanPanier", method = RequestMethod.GET)
 	public String cleanPanier(

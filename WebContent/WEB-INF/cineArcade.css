@@ -1,0 +1,47 @@
+@CHARSET "ISO-8859-1";
+
+#entete {
+	
+	background-color:silver;
+	text-align:center;
+	font:1em Arial; 
+}
+
+#baspage {
+	background-color:silver;
+	text-align:center;
+	font:1em Arial; 
+}
+
+.center {
+	text-align:center;
+	color:red;
+	font:1.5em Arial;
+}
+
+.left {
+	width: 150px;
+	float:left;
+	
+}
+.right {
+	float:right;	 
+}
+
+
+body {
+	background-color:gray;
+	font:0.8em Arial;
+}
+a {
+	font:1em Arial;
+	color:black;	
+}
+
+label
+{
+	display: block;
+	width: 120px;
+	float: left;
+}
+
