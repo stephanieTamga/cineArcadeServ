@@ -11,7 +11,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttributes;
-import org.springframework.web.servlet.ModelAndView;
 
 import fr.demos.dao.ProduitDao;
 import fr.demos.model.Criteres;
@@ -31,12 +30,18 @@ public class IndexController {
 	// listeUser.jsp ---> stocké automatiquement dans l'objet modèle
 
 	@RequestMapping(value = "/index", method = RequestMethod.GET)
-	public String affiche(ModelMap model) {
+	public String afficheInitial(ModelMap model) {
 		model.addAttribute("produit", new Produit());
 		model.addAttribute("criteres", new Criteres());
 		model.addAttribute("listProduit", new ArrayList<Produit>());
 		model.addAttribute("message", "");
 		model.addAttribute("panier", new Panier());
+		return "index";
+	}
+	
+	@RequestMapping(value = "/indexRetour", method = RequestMethod.GET)
+	public String afficheEncours() {
+	
 		return "index";
 	}
 
@@ -52,8 +57,10 @@ public class IndexController {
 
 		try {
 
+
 			lProduit.clear();
 			List<Produit> produits = daoProduit.rechercheTous();
+
 			lProduit.addAll(produits);
 
 			for (Produit lp : lProduit) {
@@ -73,7 +80,7 @@ public class IndexController {
 	// panier
 	// // méthode en GET car on utilise des liens <a href> pour récupérer la
 	// // référence du produit sélectionné
-	//
+	
 	@RequestMapping(value = "/ajouterPanier", method = RequestMethod.GET)
 	public String ajoutePanier(
 
@@ -82,20 +89,59 @@ public class IndexController {
 			@RequestParam("ref") String refDuProduitSelectionne
 	// evolution dans la V2 pour plus
 	/* ,@RequestParam("ref2") int quantite */) {
-
+		try {
 		ControllerUtil util = new ControllerUtil();
-		
 
 		// récupération du produit sélectionné dans la BDD grâce
 		// à la référence passée en requête
 		util.ajoutePanier(message, panier, refDuProduitSelectionne, daoProduit);
-			
-		
+
 		// penser à mettre un ${message} pour afficher le message en cas
 		// d'erreur
+		
 
 		return "index";
+		}
+		catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return "index";
+		}
+	}
+	
+	//
+	// // méthode permettant de faire l'ajout du produit sélectionné dans le
+	// panier
+	// // méthode en GET car on utilise des liens <a href> pour récupérer la
+	// // référence du produit sélectionné
+	//
 
+	@RequestMapping(value = "/supprimerLigne", method = RequestMethod.GET)
+	public String supprimerPanier(
+
+	@ModelAttribute("message") String message,
+			@ModelAttribute("panier") Panier panier,
+			@RequestParam("ref") String refDuProduitSelectionne
+	// evolution dans la V2 pour plus
+	/* ,@RequestParam("ref2") int quantite */) {
+		try {
+		ControllerUtil util = new ControllerUtil();
+
+		// récupération du produit sélectionné dans la BDD grâce
+		// à la référence passée en requête
+		util.supprimerPanier(message, panier, refDuProduitSelectionne, daoProduit);
+
+		// penser à mettre un ${message} pour afficher le message en cas
+		// d'erreur
+		
+
+		return "panier";
+		}
+		catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return "panier";
+		}
 	}
 	
 	@RequestMapping(value="/allerSurLeZoomProduit", method= RequestMethod.GET)
@@ -116,5 +162,6 @@ public class IndexController {
 		return "forward:/zoomArticle.htm";
 		//+produit.getReferenceProduit()
 	}
+
 
 }

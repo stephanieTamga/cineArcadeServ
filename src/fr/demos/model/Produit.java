@@ -21,9 +21,6 @@ import javax.persistence.Table;
 @Table(name = "produit")
 @Inheritance(strategy = InheritanceType.JOINED)
 public class Produit implements Serializable {
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 1L;
 
 	@Id
@@ -52,7 +49,7 @@ public class Produit implements Serializable {
 	@OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
 	private List<Critique> critique;
 	@ManyToOne
-	@JoinTable(name="idPartenaire")
+	@JoinTable(name = "idPartenaire")
 	private PartenaireCommercial partenaire;
 	private String image;
 
@@ -84,8 +81,8 @@ public class Produit implements Serializable {
 		return concepteur;
 	}
 
-	public void setConcepteur(String concepteur) {
-		this.concepteur = concepteur;
+	public String setConcepteur(String concepteur) {
+		return this.concepteur = concepteur;
 	}
 
 	public String getDescription() {
@@ -140,8 +137,8 @@ public class Produit implements Serializable {
 		return referenceProduit;
 	}
 
-	public void setReferenceProduit(String referenceProduit) {
-		this.referenceProduit = referenceProduit;
+	public String setReferenceProduit(String referenceProduit) {
+		return this.referenceProduit = referenceProduit;
 	}
 
 	public PartenaireCommercial getPartenaire() {
@@ -181,6 +178,4 @@ public class Produit implements Serializable {
 				+ caracteristiques;
 	}
 
-	
-	
 }
