@@ -51,6 +51,7 @@ Saisie User
 </tr>
 </table>
 </form:form>
+<f:ajax execute="@form" render="@all"/>
 
 </body>
 </html>

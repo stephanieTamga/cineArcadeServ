@@ -116,8 +116,8 @@ public class IndexController {
 	// // référence du produit sélectionné
 	//
 
-	@RequestMapping(value = "/supprimerPanier", method = RequestMethod.GET)
-	public String suprimerPanier(
+	@RequestMapping(value = "/supprimerLigne", method = RequestMethod.GET)
+	public String supprimerPanier(
 
 	@ModelAttribute("message") String message,
 			@ModelAttribute("panier") Panier panier,
@@ -135,12 +135,12 @@ public class IndexController {
 		// d'erreur
 		
 
-		return "index";
+		return "panier";
 		}
 		catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-			return "index";
+			return "panier";
 		}
 	}
 	
