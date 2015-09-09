@@ -1,10 +1,11 @@
 package fr.demos.controller;
 import fr.demos.dao.ProduitDao;
+import fr.demos.model.LignePanier;
 import fr.demos.model.Panier;
 import fr.demos.model.Produit;
 
 public class ControllerUtil {
-
+LignePanier ligne;
 	public void ajoutePanier(
 
 	String message, Panier panier, String refDuProduitSelectionne,
@@ -26,6 +27,7 @@ public class ControllerUtil {
 			panier.ajouterPanier(refDuProduitSelectionne, produit, quantite);
 
 		} catch (Exception e) {
+			e.printStackTrace();
 			System.out.println("le produit n'a pas été récupéré car"
 					+ e.getMessage());
 			// message qui sera renvoyé sur la page d'erreur

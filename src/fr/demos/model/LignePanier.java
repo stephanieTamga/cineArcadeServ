@@ -5,17 +5,14 @@ import java.util.List;
 public class LignePanier {
 	private int quantite;
 	private Produit produit;
-	private double prixttcLigne;
+	
 	
 	public double getPrixttcLigne() {
 		double prixHt= produit.getPrixProduit().getPrixHT();
 		double tva = produit.getPrixProduit().getTauxTaxeProduit();
-		double prixttcLigne = prixHt*tva*quantite;
-		return prixttcLigne;
+		return (prixHt+((prixHt)*(tva/100)))*quantite;
 	}
-	public void setPrixttcLigne(double prixttcLigne) {
-		this.prixttcLigne = prixttcLigne;
-	}
+	
 	public int getQuantite() {
 		return quantite;
 	}

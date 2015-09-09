@@ -44,14 +44,14 @@ public class IndexController {
 	// criteres est rempli, non vide
 	@RequestMapping(value = "/index", method = RequestMethod.POST)
 	public String recherche(@ModelAttribute("criteres") Criteres c,
-			@ModelAttribute("Produit") Produit produit,
+			@ModelAttribute("produit") Produit produit,
 			@ModelAttribute("listProduit") ArrayList<Produit> lProduit) {
 
 		System.out.println(c.getCriteres());
 
 		try {
-
-			lProduit.clear();
+//
+//			lProduit.clear();
 			List<Produit> produits = daoProduit.rechercheTous(produit);
 
 			lProduit.addAll(produits);
@@ -74,7 +74,7 @@ public class IndexController {
 	// panier
 	// // méthode en GET car on utilise des liens <a href> pour récupérer la
 	// // référence du produit sélectionné
-	//
+	
 	@RequestMapping(value = "/ajouterPanier", method = RequestMethod.GET)
 	public String ajoutePanier(
 
