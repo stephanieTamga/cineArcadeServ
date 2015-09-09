@@ -17,24 +17,33 @@
 
 
 
-<%--  <table border="1"> --%>
-<%--             <thead> --%>
-<%--                 <tr> --%>
-<%--                     <th>Votre panier</th> --%>
-<%--                     <th>Prix</th> --%>
-<%--                     <th>Quantité</th> --%>
-<%--                 </tr> --%>
-<%--             </thead> --%>
-<%--             <tbody> --%>
+<!--  <table border="1"> -->
+<!--             <thead> -->
+<!--                 <tr> -->
+<!--                     <th>Votre panier</th> -->
+<!--                     <th>Prix</th> -->
+<!--                     <th>Quantité</th> -->
+<!--                 </tr> -->
+<!--             </thead> -->
+<!--             <tbody> -->
 <%--                 <c:forEach items="${listeLignePanier}" var="produit"> --%>
-<%--                     <tr> --%>
+<!--                     <tr> -->
 <%--                         <td><c:out value="${produit.id}"/></td> --%>
 <%--                         <td><c:out value="${produit.libelle}"/></td> --%>
 <%--                         <td><c:out value="${produit.quantite}"/></td> --%>
-<%--                     </tr> --%>
+<!--                     </tr> -->
 <%--                 </c:forEach> --%>
-<%--             </tbody> --%>
-<%--         </table> --%>
+<!--             </tbody> -->
+<!--         </table> -->
+
+	<form>
+  <a href="indexRetour.htm" >Retour</a>
+</form>
+<form>
+  <a href="cleanPanier.htm" >Vider le panier</a>
+</form>
+
 
 </body>
+
 </html>

@@ -116,7 +116,7 @@ public class IndexController {
 	// // référence du produit sélectionné
 	//
 	@RequestMapping(value = "/supprimerPanier", method = RequestMethod.GET)
-	public String suprimerPanier(
+	public String supprimerPanier(
 
 	@ModelAttribute("message") String message,
 			@ModelAttribute("panier") Panier panier,
