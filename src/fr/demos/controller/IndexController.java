@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttributes;
+import org.springframework.web.servlet.ModelAndView;
 
 import fr.demos.dao.ProduitDao;
 import fr.demos.model.Criteres;
@@ -44,7 +45,7 @@ public class IndexController {
 	// criteres est rempli, non vide
 	@RequestMapping(value = "/index", method = RequestMethod.POST)
 	public String recherche(@ModelAttribute("criteres") Criteres c,
-			@ModelAttribute("Produit") Produit produit,
+			@ModelAttribute("produit") Produit produit,
 			@ModelAttribute("listProduit") ArrayList<Produit> lProduit) {
 
 		System.out.println(c.getCriteres());
@@ -62,7 +63,6 @@ public class IndexController {
 
 			return "index";
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 			return "index";
 		}
@@ -96,6 +96,25 @@ public class IndexController {
 
 		return "index";
 
+	}
+	
+	@RequestMapping(value="/allerSurLeZoomProduit", method= RequestMethod.GET)
+	public String zoomSurleProduit(@ModelAttribute("message") String messageErreurProduitZoom){
+		
+		//@ModelAttribute("produit") Produit produit,
+		//@RequestParam("ref") String refDuProduitSelectionne,
+		//System.out.println("la reference du produit recup depuis l'index dans IndexController est: "+refDuProduitSelectionne);
+		/*try {
+			produit= daoProduit.rechercherparReference(refDuProduitSelectionne);			
+		} catch (Exception e) {			
+			messageErreurProduitZoom = "Le produit n'a pas été récupéré depuis la liste car"+e.getMessage();
+			e.printStackTrace();
+			return "index";
+		}*/			
+		
+		// redirection vers le ZoomController
+		return "forward:/zoomArticle.htm";
+		//+produit.getReferenceProduit()
 	}
 
 }

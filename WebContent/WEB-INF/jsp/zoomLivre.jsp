@@ -7,34 +7,41 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <!-- la page affichera le nom du livre dans le cadre supérieur du navigateur -->
-<title>Zoom sur le livre: ${livre.designation}</title>
+<title>Zoom sur le livre: ${produit.designation}</title>
 <!-- voir si possibilité d'afficher le nom du livre dans le titre de la page -->
 </head>
 <body>
 
 
+<c:out value="${produit}"></c:out><br/>
+------
+<c:out value="${produit.getDesignation()}"></c:out>
+------
+
+
+
+<!-- 
 	<!-- le livre sélectionné pour plus de détails doit être renvoyé par le controlleur (IndexController)  
 	qui envoie sur cette page, afin de pouvoir en afficher les détails et caractéristiques	 -->
 
 	<!-- Nous utilisons des id dans chaque balise afin de pouvoir mettre en place le responsive web design par la suite -->
 
 
-	<span id="encadreImageDuProduit"> <!-- <img alt="image Du Produit" src="${livre.image}" id="">  -->
+<span id="encadreImageDuProduit"> <!-- <img alt="image Du Produit" src="${livre.image}" id="">  -->
 	</span>
-
-
-	<h2 id="titrePageZoom">Détails sur le livre</h2>
+<h2 id="titrePageZoom">Détails sur le livre</h2>
+	
 
 	<!-- dans le fichoer css, faire un affichage des éléments sous faire de bulletPoint -->
 	<div id="encadreDetailsDuProduit"><!-- nous utilisons une balise div car ces éléments constituent un bloc -->
-		<label>Titre:</label>
-		<p id="designationDuProduit">${livre.designation}</p>
+		
+		<p id="designationDuProduit">${produit.designation}</p>
 		<br /><!-- affiche le nom du livre -->
 		<label>Auteur:</label>
-		<p id="concepteurDuProduit">${livre.concepteur}</p><br /><!-- affiche le nom du concepteur du livre -->
+		<p id="concepteurDuProduit">${produit.concepteur}</p><br /><!-- affiche le nom du concepteur du livre -->
 		<label>Editeur:</label>
 		<p id="fabricantDuProduit">${livre.fabricant}</p><br /><!-- affiche le nom du fabricant du livre -->
-		<label>ISBN:</label>
+		<label>ISBN:</label>		
 		<p id="numeroIsbn">${livre.numeroIsbn}</p>
 		<br /><!-- affiche le numero ISBN du livre -->
 		<label>Informations supplémentaires:</label>
@@ -58,6 +65,9 @@
 
 <a href="#encadreImageDuProduit">Revenir en haut de la page</a>
 	<!-- mettre un bouton pour retourner en haut de la page -->
+
+
+ -->
 
 </body>
 </html>

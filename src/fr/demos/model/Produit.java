@@ -172,6 +172,15 @@ public class Produit implements Serializable {
 		super();
 	}
 
+	@Override
+	public String toString() {
+		return "Produit [referenceProduit=" + referenceProduit
+				+ ", designation=" + designation + ", categorie=" + categorie
+				+ ", fabriquant=" + fabriquant + ", concepteur=" + concepteur
+				+ ", description=" + description + ", caracteristiques="
+				+ caracteristiques;
+	}
+
 	
 	
 }
