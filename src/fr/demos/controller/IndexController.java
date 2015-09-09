@@ -30,12 +30,18 @@ public class IndexController {
 	// listeUser.jsp ---> stocké automatiquement dans l'objet modèle
 
 	@RequestMapping(value = "/index", method = RequestMethod.GET)
-	public String affiche(ModelMap model) {
+	public String afficheInitial(ModelMap model) {
 		model.addAttribute("produit", new Produit());
 		model.addAttribute("criteres", new Criteres());
 		model.addAttribute("listProduit", new ArrayList<Produit>());
 		model.addAttribute("message", "");
 		model.addAttribute("panier", new Panier());
+		return "index";
+	}
+	
+	@RequestMapping(value = "/indexRetour", method = RequestMethod.GET)
+	public String afficheEncours() {
+	
 		return "index";
 	}
 
@@ -109,8 +115,40 @@ public class IndexController {
 	// // méthode en GET car on utilise des liens <a href> pour récupérer la
 	// // référence du produit sélectionné
 	//
-//	@RequestMapping(value = "/supprimerPanier", method = RequestMethod.GET)
-//	public String suprimerPanier(
+
+	@RequestMapping(value = "/supprimerPanier", method = RequestMethod.GET)
+	public String suprimerPanier(
+
+	@ModelAttribute("message") String message,
+			@ModelAttribute("panier") Panier panier,
+			@RequestParam("ref") String refDuProduitSelectionne
+	// evolution dans la V2 pour plus
+	/* ,@RequestParam("ref2") int quantite */) {
+		try {
+		ControllerUtil util = new ControllerUtil();
+
+		// récupération du produit sélectionné dans la BDD grâce
+		// à la référence passée en requête
+		util.supprimerPanier(message, panier, refDuProduitSelectionne, daoProduit);
+
+		// penser à mettre un ${message} pour afficher le message en cas
+		// d'erreur
+		
+
+		return "index";
+		}
+		catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return "index";
+		}
+	}
+	
+	// la méthode ne fonctionne pas pour le moment depuis le controleur: voir la console
+	// En cours
+//	@RequestMapping(value = "/clearPanier", method = RequestMethod.GET)
+//	public String clearPanier(
+
 //
 //	@ModelAttribute("message") String message,
 //			@ModelAttribute("panier") Panier panier,
@@ -120,12 +158,14 @@ public class IndexController {
 //		try {
 //		ControllerUtil util = new ControllerUtil();
 //
+
 //		// récupération du produit sélectionné dans la BDD grâce
 //		// à la référence passée en requête
 //		util.supprimerPanier(message, panier, refDuProduitSelectionne, daoProduit);
 //
 //		// penser à mettre un ${message} pour afficher le message en cas
 //		// d'erreur
+
 //		
 //
 //		return "index";
@@ -136,5 +176,5 @@ public class IndexController {
 //			return "index";
 //		}
 //	}
-//	
+
 }

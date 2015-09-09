@@ -4,6 +4,9 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
+import utils.ExceptionNegativeValue;
+import utils.ExceptionStock;
+
 public class Panier implements Serializable {
 
 	/**
@@ -68,8 +71,6 @@ public class Panier implements Serializable {
 	public List<LignePanier> getListelignePanier() {
 		return listelignePanier;
 	}
-
-	
 
 	@Override
 	public String toString() {
@@ -148,6 +149,7 @@ public class Panier implements Serializable {
 		System.out.println("le nombre de produit:" + nbrProduit);
 
 	}
+
 	
 
 	/*
@@ -156,8 +158,11 @@ public class Panier implements Serializable {
 	 * }
 	 */
 
-	public void supprimerPanier(String refDuProduitSelestionne, Produit produit,
-			int quantite) {
+
+
+	public void supprimerPanier(String refDuProduitSelestionne,
+			Produit produit, int quantite) throws ExceptionNegativeValue {
+
 		System.out.println("appel suprimer");
 		LignePanier ligne;
 
@@ -169,10 +174,12 @@ public class Panier implements Serializable {
 		// boucle for permettant de parcourir la liste des lignes existantes
 		// dans le panier
 		boolean refTrouve = false;
+		
 		for (int i = 0; i < listelignePanier.size(); i++) {
 			// instanciation de la variable contenant la référence de chaque
 			// produit dans le panier
-			refDuProduit = listelignePanier.get(i).getProduit()
+			ligne=listelignePanier.get(i);
+			refDuProduit = ligne.getProduit()
 					.getReferenceProduit();
 
 			if (refDuProduit.equals(refDuProduitSelestionne)) {
@@ -183,16 +190,34 @@ public class Panier implements Serializable {
 						.println("modif de la quantité d'une ligne dans le panier "
 								+ refDuProduitSelestionne);
 				listelignePanier.get(i).setQuantite(
-						quantite + listelignePanier.get(i).getQuantite());
-				
-				// soustraction effectue depuis les ligne
-				sommeTotal -= ((produit.getPrixProduit().getPrixHT()) * quantite);
-				System.out
-						.println("la somme totale si ref=refRecherchee trouvee après soustraction : "
-								+ sommeTotal);
+						quantite + ligne.getQuantite());
+
+				// reduction de la somme
+				if (sommeTotal < 0) {
+					throw new ExceptionNegativeValue(quantite);
+
+				} else {
+					// soustraction effectue depuis les ligne
+					sommeTotal -= ((produit.getPrixProduit().getPrixHT()) * quantite);
+					System.out
+							.println("la somme totale si ref=refRecherchee trouvee apres soustraction : "
+									+ sommeTotal);
+
+				}
+
 				// reduction de la quantité
-				nbrProduit -= quantite;
-				System.out.println("le nombre de produit après soustraction:" + nbrProduit);
+				if (nbrProduit < 1) {
+					throw new ExceptionNegativeValue(quantite);
+
+				} else {
+					// soustraction effectue depuis les ligne
+
+					nbrProduit -= quantite;
+					System.out
+							.println("le nombre de produit apres soustraction:"
+									+ nbrProduit);
+				}
+
 				break;
 			}
 		}
@@ -207,11 +232,20 @@ public class Panier implements Serializable {
 
 				System.out.println("ajout d'une ligne dans le panier" + ligne);
 				listelignePanier.remove(ligne);
-				sommeTotal -= ((produit.getPrixProduit().getPrixHT()) * quantite);
-				System.out.println("la somme totale si refRech non trouvé: "
-						+ sommeTotal);
-				nbrProduit -= ligne.getQuantite();
-				System.out.println("le nombre de produit:" + nbrProduit);
+
+				if (nbrProduit < 1 || sommeTotal < 0) {
+					throw new ExceptionNegativeValue(quantite);
+				} else {
+					sommeTotal -= ((produit.getPrixProduit().getPrixHT()) * quantite);
+					System.out
+							.println("la somme totale si refRech non trouvé: "
+									+ sommeTotal);
+					nbrProduit -= ligne.getQuantite();
+					System.out
+							.println("le nombre de produit apres soustraction:"
+									+ nbrProduit);
+				}
+
 			} catch (Exception e) {
 				// mauvaise gestion, valable pour le debugging
 				e.printStackTrace();
@@ -219,6 +253,22 @@ public class Panier implements Serializable {
 			}
 
 		}
+
+	}
+
+	public void clearPanier() {
+		System.out.println("appel Clean Panier");
+
+		// déclaration d'une variable nommé explicitement qui ontiendra la
+		// référence des produits déjà dans le panier
+
+		// Creation d'une nouvelle liste: le panier est vidé
+		//this.listelignePanier = new ArrayList<LignePanier>();
+		
+		for (int i = 0; i < listelignePanier.size(); i++) {
+			listelignePanier.clear();
+		}
+		System.out.println("Le panier est vidé");
 
 	}
 
