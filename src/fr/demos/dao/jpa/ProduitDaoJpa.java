@@ -7,6 +7,7 @@ import javax.persistence.PersistenceContext;
 import javax.persistence.TypedQuery;
 
 import fr.demos.dao.ProduitDao;
+import fr.demos.model.Livre;
 import fr.demos.model.Produit;
 
 public class ProduitDaoJpa implements ProduitDao {
@@ -68,7 +69,7 @@ public class ProduitDaoJpa implements ProduitDao {
 		// referenceProduit);
 
 	}
-
+	
 	@Override
 	public List<Produit> rechercheTous() throws Exception {
 		TypedQuery<Produit> query = em.createQuery("from Produit p ",

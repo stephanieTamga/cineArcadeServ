@@ -70,7 +70,7 @@
 
 					<ul>
 						<c:forEach var="listProduit" items="${listProduit}">
-							<li>${listProduit.concepteur}<a href="allerSurLeZoomProduit.htm?ref=${listProduit.referenceProduit}">détails</a><a
+							<li>${listProduit.concepteur}<a href="allerSurLeZoomProduit.htm?ref=${listProduit.referenceProduit}&categorie=${listProduit.categorie}">détails</a><a
 								href="ajouterPanier.htm?ref=${listProduit.referenceProduit}">
 									Ajouter au panier</a></li>
 

@@ -32,8 +32,8 @@ public class Produit implements Serializable {
 	private String designation;
 	@Column(length = 30)
 	private String categorie;
-	@Column(length = 100)
-	private String fabriquant;
+	@Column(length = 100,name="fabriquant")
+	private String fabricant;
 	@Column(nullable = false, length = 250)
 	private String concepteur;
 	@Column(length = 3500)
@@ -69,12 +69,12 @@ public class Produit implements Serializable {
 		this.designation = designation;
 	}
 
-	public String getFabriquant() {
-		return fabriquant;
+	public String getFabricant() {
+		return fabricant;
 	}
 
-	public void setFabriquant(String fabriquant) {
-		this.fabriquant = fabriquant;
+	public void setFabricant(String fabricant) {
+		this.fabricant = fabricant;
 	}
 
 	public String getConcepteur() {
@@ -173,7 +173,7 @@ public class Produit implements Serializable {
 	public String toString() {
 		return "Produit [referenceProduit=" + referenceProduit
 				+ ", designation=" + designation + ", categorie=" + categorie
-				+ ", fabriquant=" + fabriquant + ", concepteur=" + concepteur
+				+ ", fabriquant=" + fabricant + ", concepteur=" + concepteur
 				+ ", description=" + description + ", caracteristiques="
 				+ caracteristiques;
 	}

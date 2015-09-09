@@ -41,8 +41,8 @@ http://www.springframework.org/schema/tx/spring-tx.xsd">
 		class="org.springframework.transaction.jta.JtaTransactionManager">
 	</bean>
 	<bean id="dao" class="fr.demos.dao.jpa.ClientDaoJpa"></bean>
-	<bean id="daolivre" class="fr.demos.dao.jpa.ProduitDaoJpa"></bean>
-	
+	<bean id="daoProduit" class="fr.demos.dao.jpa.ProduitDaoJpa"></bean>
+	<bean id="daolivre" class="fr.demos.dao.jpa.LivreDaoJpa"></bean>
 
 	<!-- on pourra utiliser l'annotation @Transactional -->
 	<tx:annotation-driven transaction-manager="transactionManager" />
