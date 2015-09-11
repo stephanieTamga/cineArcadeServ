@@ -11,7 +11,7 @@
 <body>
 	<%--  ${String refProduit = request.getParameter("ref"} --%>
 
-	<h1>Votre Panier contient ${panier.nbrProduit}</h1>
+	<h1>Votre Panier contient <span id="nombreId">${panier.nbrProduit} </span></h1>
 
 
 	<table border="1">
@@ -64,7 +64,7 @@
 			</form>
 		</tbody>
 		<tfoot>
-			<td>${panier.sommeTotal}</td>
+			<td><span id="sommeTotaleId">${panier.sommeTotal}</span></td>
 		</tfoot>
 	</table>
 

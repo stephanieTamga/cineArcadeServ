@@ -212,8 +212,8 @@ public class Panier implements Serializable {
 
 			}
 		}
-		return "sommeTotal ," + sommeTotal + " prixligne," + prixligne
-				+ " nbrProduit," + nbrProduit;
+		return sommeTotal + ","  + prixligne+
+				"," + nbrProduit;
 
 	}
 
