@@ -29,8 +29,8 @@ Saisie User
 </tr>
 <td>Adresse de Facturation :</td>
 <td><form:input path="adresseFacturation" /></td>
-<td><form:errors path="adresseFacturation"/></td>
-</tr>
+			<td><form:errors path="adresseFacturation" /></td>
+			</tr>
 <tr>
 <td>Email :</td>
 <td><form:input path="email" /></td>

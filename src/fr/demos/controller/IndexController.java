@@ -56,9 +56,10 @@ public class IndexController {
 		System.out.println(c.getCriteres());
 
 		try {
-			//
-			// lProduit.clear();
-			List<Produit> produits = daoProduit.rechercheTous(produit);
+
+
+			lProduit.clear();
+			List<Produit> produits = daoProduit.rechercheTous();
 
 			lProduit.addAll(produits);
 
@@ -69,7 +70,6 @@ public class IndexController {
 
 			return "index";
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 			return "index";
 		}
@@ -107,5 +107,26 @@ public class IndexController {
 			return "index";
 		}
 	}
+
+	@RequestMapping(value="/allerSurLeZoomProduit", method= RequestMethod.GET)
+	public String zoomSurleProduit(@ModelAttribute("message") String messageErreurProduitZoom){
+		
+		//@ModelAttribute("produit") Produit produit,
+		//@RequestParam("ref") String refDuProduitSelectionne,
+		//System.out.println("la reference du produit recup depuis l'index dans IndexController est: "+refDuProduitSelectionne);
+		/*try {
+			produit= daoProduit.rechercherparReference(refDuProduitSelectionne);			
+		} catch (Exception e) {			
+			messageErreurProduitZoom = "Le produit n'a pas été récupéré depuis la liste car"+e.getMessage();
+			e.printStackTrace();
+			return "index";
+		}*/			
+		
+		// redirection vers le ZoomController
+		return "forward:/zoomArticle.htm";
+		//+produit.getReferenceProduit()
+	}
+
+
 
 }

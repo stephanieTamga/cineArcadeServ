@@ -21,30 +21,25 @@ import javax.persistence.Table;
 @Table(name = "produit")
 @Inheritance(strategy = InheritanceType.JOINED)
 public class Produit implements Serializable {
+	private static final long serialVersionUID = 1L;
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private long idProduit;
-	private static final long serialVersionUID = 1L;
-
-	@Column(unique = true, nullable = false, length = 30)
+	@Column(unique=true, nullable=false, length=30)
 	private String referenceProduit;
-
-	public static long getSerialversionuid() {
-		return serialVersionUID;
-	}
-
-	@Column(length = 30)
+	@Column(length = 250)
 	private String designation;
 	@Column(length = 30)
 	private String categorie;
-	@Column(length = 30)
-	private String fabriquant;
-	@Column(nullable = false, length = 30)
+	@Column(length = 100,name="fabriquant")
+	private String fabricant;
+	@Column(nullable = false, length = 250)
 	private String concepteur;
-	@Column(length = 200)
+	@Column(length = 3500)
 	private String description;
-	@Column(length = 200)
-	private String Caracteristiques;
+	@Column(length = 500)
+	private String caracteristiques;
 	@Column(length = 30)
 	private boolean virtuel;
 	@Column(length = 30)
@@ -74,12 +69,12 @@ public class Produit implements Serializable {
 		this.designation = designation;
 	}
 
-	public String getFabriquant() {
-		return fabriquant;
+	public String getFabricant() {
+		return fabricant;
 	}
 
-	public void setFabriquant(String fabriquant) {
-		this.fabriquant = fabriquant;
+	public void setFabricant(String fabricant) {
+		this.fabricant = fabricant;
 	}
 
 	public String getConcepteur() {
@@ -99,11 +94,11 @@ public class Produit implements Serializable {
 	}
 
 	public String getCaracteristiques() {
-		return Caracteristiques;
+		return caracteristiques;
 	}
 
 	public void setCaracteristiques(String caracteristiques) {
-		Caracteristiques = caracteristiques;
+		this.caracteristiques = caracteristiques;
 	}
 
 	public boolean isVirtuel() {
@@ -172,6 +167,15 @@ public class Produit implements Serializable {
 
 	public Produit() {
 		super();
+	}
+
+	@Override
+	public String toString() {
+		return "Produit [referenceProduit=" + referenceProduit
+				+ ", designation=" + designation + ", categorie=" + categorie
+				+ ", fabriquant=" + fabricant + ", concepteur=" + concepteur
+				+ ", description=" + description + ", caracteristiques="
+				+ caracteristiques;
 	}
 
 }

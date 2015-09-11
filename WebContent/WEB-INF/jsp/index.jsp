@@ -70,7 +70,7 @@
 
 					<ul>
 						<c:forEach var="listProduit" items="${listProduit}">
-							<li>${listProduit.concepteur}<a
+							<li>${listProduit.concepteur}<a href="allerSurLeZoomProduit.htm?ref=${listProduit.referenceProduit}&categorie=${listProduit.categorie}">détails</a><a
 								href="ajouterPanier.htm?ref=${listProduit.referenceProduit}">
 									Ajouter au panier</a></li>
 
@@ -81,7 +81,9 @@
 			</td>
 		</tr>
 
-	</table>
+	</table><br/>
+	<p><b>${message}</b></p><!-- message eb cas de non r&cupération du produit sur lequel on a voulu zoomé -->
+	
 	<%-- 	<form:form method="POST" commandName="criteres"> --%>
 	<!-- 		<table> -->
 	<!-- 			<tr> -->

@@ -2,6 +2,7 @@ package fr.demos.dao;
 
 import java.util.List;
 
+import fr.demos.model.Livre;
 import fr.demos.model.Produit;
 
 public interface ProduitDao extends Dao<Produit> {
@@ -29,9 +30,10 @@ public interface ProduitDao extends Dao<Produit> {
 //	Produit RechercherParCollection(String collection) throws Exception;
 //	Produit RechercherParGenre(String genre) throws Exception;
 //	
-	List<Produit> rechercheTous(Produit produit) throws Exception;
-
+	List<Produit> rechercheTous() throws Exception;
+//	Produit liste()throws Exception;
 	Produit rechercherparReference(String refDuProduitSelectionne) throws Exception;
+	
 
 
 }
