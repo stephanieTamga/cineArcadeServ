@@ -73,9 +73,7 @@
 							<li>${listProduit.concepteur}<a
 								href="ajouterPanier.htm?ref=${listProduit.referenceProduit}">
 									Ajouter au panier</a></li>
-<a
-								href="supprimerPanier.htm?ref=${listProduit.referenceProduit}">
-									supprimer au panier</a></li>
+
 						</c:forEach>
 					</ul>
 

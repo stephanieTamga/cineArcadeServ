@@ -39,7 +39,7 @@ LignePanier ligne;
 
 	}
 
-	public void supprimerPanier(
+	public void supprimerLigne(
 
 	String message, Panier panier, String refDuProduitSelectionne,
 			ProduitDao produitDao
@@ -55,9 +55,8 @@ LignePanier ligne;
 			// .rechercherparReference(refDuProduitSelectionne);
 			Produit produit = produitDao
 					.rechercherparReference(refDuProduitSelectionne);
-			// actuellement la quantité est 1
-			int quantite = 1;
-			panier.supprimerPanier(refDuProduitSelectionne, produit, quantite);
+
+			panier.supprimerLigne(refDuProduitSelectionne);
 
 		} catch (Exception e) {
 			System.out.println("le produit n'a pas été récupéré car"
@@ -97,5 +96,6 @@ LignePanier ligne;
 
 	}
 	
-
+	
+	
 }

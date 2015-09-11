@@ -38,10 +38,10 @@ public class IndexController {
 		model.addAttribute("panier", new Panier());
 		return "index";
 	}
-	
+
 	@RequestMapping(value = "/indexRetour", method = RequestMethod.GET)
 	public String afficheEncours() {
-	
+
 		return "index";
 	}
 
@@ -56,8 +56,8 @@ public class IndexController {
 		System.out.println(c.getCriteres());
 
 		try {
-//
-//			lProduit.clear();
+			//
+			// lProduit.clear();
 			List<Produit> produits = daoProduit.rechercheTous(produit);
 
 			lProduit.addAll(produits);
@@ -80,7 +80,7 @@ public class IndexController {
 	// panier
 	// // méthode en GET car on utilise des liens <a href> pour récupérer la
 	// // référence du produit sélectionné
-	
+
 	@RequestMapping(value = "/ajouterPanier", method = RequestMethod.GET)
 	public String ajoutePanier(
 
@@ -90,95 +90,22 @@ public class IndexController {
 	// evolution dans la V2 pour plus
 	/* ,@RequestParam("ref2") int quantite */) {
 		try {
-		ControllerUtil util = new ControllerUtil();
+			ControllerUtil util = new ControllerUtil();
 
-		// récupération du produit sélectionné dans la BDD grâce
-		// à la référence passée en requête
-		util.ajoutePanier(message, panier, refDuProduitSelectionne, daoProduit);
+			// récupération du produit sélectionné dans la BDD grâce
+			// à la référence passée en requête
+			util.ajoutePanier(message, panier, refDuProduitSelectionne,
+					daoProduit);
 
-		// penser à mettre un ${message} pour afficher le message en cas
-		// d'erreur
-		
+			// penser à mettre un ${message} pour afficher le message en cas
+			// d'erreur
 
-		return "index";
-		}
-		catch (Exception e) {
+			return "index";
+		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 			return "index";
 		}
 	}
-	
-	//
-	// // méthode permettant de faire l'ajout du produit sélectionné dans le
-	// panier
-	// // méthode en GET car on utilise des liens <a href> pour récupérer la
-	// // référence du produit sélectionné
-	//
-//<<<<<<< HEAD
-//	@RequestMapping(value = "/supprimerPanier", method = RequestMethod.GET)
-//=======
-
-	@RequestMapping(value = "/supprimerLigne", method = RequestMethod.GET)
-
-public String supprimerPanier(
-
-	@ModelAttribute("message") String message,
-			@ModelAttribute("panier") Panier panier,
-			@RequestParam("ref") String refDuProduitSelectionne
-	// evolution dans la V2 pour plus
-	/* ,@RequestParam("ref2") int quantite */) {
-		try {
-		ControllerUtil util = new ControllerUtil();
-
-		// récupération du produit sélectionné dans la BDD grâce
-		// à la référence passée en requête
-		util.supprimerPanier(message, panier, refDuProduitSelectionne, daoProduit);
-
-		// penser à mettre un ${message} pour afficher le message en cas
-		// d'erreur
-		
-
-		return "panier";
-		}
-		catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-			return "panier";
-		}
-	}
-	
-	// la méthode ne fonctionne pas pour le moment depuis le controleur: voir la console
-	// En cours
-//	@RequestMapping(value = "/clearPanier", method = RequestMethod.GET)
-//	public String clearPanier(
-
-//
-//	@ModelAttribute("message") String message,
-//			@ModelAttribute("panier") Panier panier,
-//			@RequestParam("ref") String refDuProduitSelectionne
-//	// evolution dans la V2 pour plus
-//	/* ,@RequestParam("ref2") int quantite */) {
-//		try {
-//		ControllerUtil util = new ControllerUtil();
-//
-
-//		// récupération du produit sélectionné dans la BDD grâce
-//		// à la référence passée en requête
-//		util.supprimerPanier(message, panier, refDuProduitSelectionne, daoProduit);
-//
-//		// penser à mettre un ${message} pour afficher le message en cas
-//		// d'erreur
-
-//		
-//
-//		return "index";
-//		}
-//		catch (Exception e) {
-//			// TODO Auto-generated catch block
-//			e.printStackTrace();
-//			return "index";
-//		}
-//	}
 
 }

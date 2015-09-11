@@ -10,7 +10,8 @@ public class LignePanier {
 	public double getPrixttcLigne() {
 		double prixHt= produit.getPrixProduit().getPrixHT();
 		double tva = produit.getPrixProduit().getTauxTaxeProduit();
-		return (prixHt+((prixHt)*(tva/100)))*quantite;
+		double prixTotal=(prixHt+(prixHt*(tva/100)))*quantite;
+		return prixTotal;
 	}
 	
 	public int getQuantite() {
